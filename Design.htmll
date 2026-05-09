@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagrama de Arquitetura SCAA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f1f5f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .canvas-container {
+            position: relative;
+            width: 95%;
+            max-width: 1000px;
+            height: 700px;
+            background: #1e293b;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            margin-top: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+        }
+        .node {
+            position: absolute;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+        /* Cores dos Módulos */
+        .manager { background: #3b82f6; border: 2px solid #60a5fa; width: 180px; height: 60px; top: 50px; left: 410px; }
+        .filter { background: #10b981; border: 2px solid #34d399; width: 140px; height: 50px; }
+        .cai { background: #6366f1; border: 2px solid #818cf8; width: 140px; height: 80px; }
+        .donkey { background: #f59e0b; border: 2px solid #fbbf24; width: 100px; height: 40px; font-size: 12px; }
+        .search { background: #ec4899; border: 2px solid #f472b6; width: 160px; height: 50px; bottom: 50px; left: 420px; }
+        .human { background: #94a3b8; border: 2px solid #cbd5e1; width: 140px; height: 50px; top: 50px; left: 20px; color: #0f172a; }
+
+        /* Posicionamento dos Enxames (Swarm) */
+        .swarm-1 { top: 220px; left: 100px; }
+        .swarm-2 { top: 220px; left: 430px; }
+        .swarm-3 { top: 220px; left: 760px; }
+
+        .line {
+            position: absolute;
+            background: #475569;
+            z-index: -1;
+        }
+        .air-gap {
+            position: absolute;
+            border: 2px dashed #ef4444;
+            padding: 20px;
+            border-radius: 12px;
+            pointer-events: none;
+        }
+        .label-tag {
+            font-size: 10px;
+            text-transform: uppercase;
+            opacity: 0.8;
+            margin-bottom: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="text-2xl font-bold mt-6">Swarm Cognitive Agentic Architecture (SCAA)</h1>
+    <p class="text-slate-400 mb-4">Fluxo de Dados Isolado e Gestão Autônoma</p>
+
+    <div class="canvas-container" id="canvas">
+        <!-- Human Interface -->
+        <div class="node human">
+            <span class="label-tag">Interface</span>
+            Humano / Admin
+        </div>
+
+        <!-- Manager -->
+        <div class="node manager" id="managerNode">
+            <span class="label-tag">Orquestrador</span>
+            Manager
+        </div>
+
+        <!-- Donkey Runners -->
+        <div class="node donkey" style="top: 130px; left: 250px;">AI Donkey</div>
+        <div class="node donkey" style="top: 130px; left: 450px;">AI Donkey</div>
+        <div class="node donkey" style="top: 130px; left: 650px;">AI Donkey</div>
+
+        <!-- SWARM 1: BIOLOGY -->
+        <div class="air-gap" style="top: 200px; left: 80px; width: 200px; height: 250px;"></div>
+        <div class="node filter swarm-1" style="top: 220px;">AI Filtro: Bio</div>
+        <div class="node cai swarm-1" style="top: 330px;">Cognitive AI: Bio (Isolado)</div>
+
+        <!-- SWARM 2: CHEMISTRY -->
+        <div class="air-gap" style="top: 200px; left: 410px; width: 200px; height: 250px;"></div>
+        <div class="node filter swarm-2" style="top: 220px;">AI Filtro: Chem</div>
+        <div class="node cai swarm-2" style="top: 330px;">Cognitive AI: Chem (Isolado)</div>
+
+        <!-- SWARM 3: PHYSICS -->
+        <div class="air-gap" style="top: 200px; left: 740px; width: 200px; height: 250px;"></div>
+        <div class="node filter swarm-3" style="top: 220px;">AI Filtro: Phys</div>
+        <div class="node cai swarm-3" style="top: 330px;">Cognitive AI: Phys (Isolado)</div>
+
+        <!-- Search Engine -->
+        <div class="node search">
+            <span class="label-tag">Validação Externa</span>
+            Search AI (Web Access)
+        </div>
+
+        <!-- Red Line Label -->
+        <div style="position: absolute; top: 460px; left: 415px; color: #ef4444; font-size: 11px; font-weight: bold;">
+            BARREIRA DE ISOLAMENTO (AIR-GAP)
+        </div>
+    </div>
+
+    <div class="max-w-4xl px-6 py-8 text-slate-300">
+        <h2 class="text-xl font-bold text-white mb-4">Lógica de Funcionamento</h2>
+        <ul class="space-y-4">
+            <li>
+                <strong class="text-blue-400">1. Manager (O Maestro):</strong> Recebe a instrução do humano. Ele não tem conhecimento técnico profundo, mas sabe quais módulos do enxame (Swarm) ativar.
+            </li>
+            <li>
+                <strong class="text-amber-400">2. AI Donkey (O Entregador):</strong> São agentes leves. Eles transportam os dados brutos e as metas do Manager para os Filtros. Eles garantem que a informação flua sem que os módulos se toquem.
+            </li>
+            <li>
+                <strong class="text-emerald-400">3. AI Filtro (O Auditor):</strong> É o único que entra e sai da área isolada. Ele recebe o projeto da Cognitive AI e usa a <strong>Search AI</strong> para confirmar se a ideia é real ou perigosa antes de enviar de volta ao Manager.
+            </li>
+            <li>
+                <strong class="text-indigo-400">4. Cognitive AI (O Motor):</strong> Trabalha em vácuo total. Recebe apenas lógica e leis fundamentais. Tem liberdade total para criar "Ab Initio" (do zero) e gerir sua própria descoberta.
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        // Animação simples de fluxo
+        const canvas = document.getElementById('canvas');
+        function createParticle(startX, startY, endX, endY) {
+            const particle = document.createElement('div');
+            particle.style.position = 'absolute';
+            particle.style.width = '6px';
+            particle.style.height = '6px';
+            particle.style.background = '#fbbf24';
+            particle.style.borderRadius = '50%';
+            particle.style.boxShadow = '0 0 8px #fbbf24';
+            particle.style.zIndex = '10';
+            canvas.appendChild(particle);
+
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 0.01;
+                const x = startX + (endX - startX) * progress;
+                const y = startY + (endY - startY) * progress;
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+
+                if (progress >= 1) {
+                    clearInterval(interval);
+                    canvas.removeChild(particle);
+                }
+            }, 20);
+        }
+
+        // Simular fluxo contínuo
+        setInterval(() => {
+            // Humano -> Manager
+            createParticle(160, 75, 410, 75);
+            // Manager -> Filtros (via Donkeys)
+            setTimeout(() => {
+                createParticle(450, 110, 180, 220);
+                createParticle(500, 110, 500, 220);
+                createParticle(550, 110, 820, 220);
+            }, 500);
+            // Filtros <-> Search
+            setTimeout(() => {
+                createParticle(180, 270, 420, 600);
+                createParticle(500, 270, 500, 600);
+                createParticle(820, 270, 580, 600);
+            }, 1500);
+        }, 4000);
+    </script>
+</body>
+</html>
