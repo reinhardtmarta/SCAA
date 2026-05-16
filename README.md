@@ -1,4 +1,4 @@
-# SCAA
+
 # SCAA — Swarm Cognitive Agentic Architecture
 
 **A security-first, process-efficient orchestration framework for isolated AI specialists.**
